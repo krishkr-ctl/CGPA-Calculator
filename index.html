@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO Meta Tags -->
+    <title>CGPA Calculator for Engineering Students | How to calculate CGPA | cgpa calculator</title>
+    <meta name="description" content="Free online CGPA Calculator for Engineering Students. Calculate your Semester GPA and Cumulative GPA easily. Learn the CGPA formula and grading scale here.">
+    <meta name="keywords" content="CGPA calculator, engineering CGPA, SGPA calculator, GPA calculator, how to calculate CGPA, college grade calculator, engineering student tools">
+    <meta name="author" content="Engineering Tools">
+    <meta name="robots" content="index, follow">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://yourwebsite.com/">
+    <meta property="og:title" content="CGPA Calculator for Engineering Students | How to calculate CGPA">
+    <meta property="og:description" content="Calculate your engineering CGPA instantly. Accurate, mobile-friendly, and easy to use.">
+    <meta property="og:image" content="https://yourwebsite.com/cgpa-image.jpg">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:title" content="CGPA Calculator for Engineering Students">
+    <meta property="twitter:description" content="Calculate your engineering CGPA instantly. Accurate, mobile-friendly, and easy to use.">
+
+    <!-- Schema Markup (JSON-LD) for Rich Snippets -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "Engineering CGPA Calculator",
+      "applicationCategory": "EducationalApplication",
+      "operatingSystem": "All",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "description": "A tool to calculate Cumulative Grade Point Average for engineering students."
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [{
+        "@type": "Question",
+        "name": "How do I calculate CGPA?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "To calculate CGPA, multiply the credit hours of each subject by the grade point obtained. Sum these values and divide by the total credit hours."
+        }
+      }, {
+        "@type": "Question",
+        "name": "What is the formula for CGPA?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "CGPA = (Sum of (Credit * Grade Point)) / (Sum of Credits)"
+        }
+      }]
+    }
+    </script>
+
+    <style>
+        :root {
+            --primary-color: #2563eb;
+            --secondary-color: #1e40af;
+            --bg-color: #f3f4f6;
+            --card-bg: #ffffff;
+            --text-color: #1f2937;
+            --border-color: #e5e7eb;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        h1 {
+            color: var(--primary-color);
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            color: #6b7280;
+            font-size: 0.95rem;
+        }
+
+        /* Calculator Styles */
+        .calculator-section {
+            margin-bottom: 30px;
+        }
+
+        .input-group {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 15px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .input-wrapper {
+            flex: 1;
+            min-width: 120px;
+        }
+
+        label {
+            display: block;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 5px;
+            color: #4b5563;
+        }
+
+        input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            font-size: 1rem;
+        }
+
+        input[type="number"]:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+        }
+
+        .btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background 0.2s;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: white;
+            width: 100%;
+            font-size: 1.1rem;
+            margin-top: 10px;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--secondary-color);
+        }
+
+        .btn-add {
+            background-color: #10b981;
+            color: white;
+            font-size: 0.9rem;
+            padding: 8px 15px;
+        }
+
+        .btn-remove {
+            background-color: #ef4444;
+            color: white;
+            padding: 8px 12px;
+        }
+
+        .result-box {
+            background-color: #eff6ff;
+            border: 1px solid #bfdbfe;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            margin-top: 20px;
+            display: none; /* Hidden by default */
+        }
+
+        .result-box h2 {
+            color: var(--primary-color);
+            font-size: 2.5rem;
+            margin: 10px 0;
+        }
+
+        .result-box p {
+            font-size: 1.1rem;
+            color: #374151;
+        }
+
+        /* Content Section for SEO */
+        .content-section {
+            margin-top: 40px;
+            border-top: 1px solid var(--border-color);
+            padding-top: 20px;
+        }
+
+        .content-section h2 {
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            color: var(--text-color);
+        }
+
+        .content-section p {
+            margin-bottom: 15px;
+            color: #4b5563;
+        }
+
+        .formula-box {
+            background: #f9fafb;
+            padding: 15px;
+            border-left: 4px solid var(--primary-color);
+            margin: 15px 0;
+            font-family: monospace;
+            font-size: 1.1rem;
+        }
+
+        /* Mobile Optimization */
+        @media (max-width: 600px) {
+            .container {
+                padding: 20px;
+            }
+            h1 {
+                font-size: 1.5rem;
+            }
+            .input-group {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            .btn-add, .btn-remove {
+                width: 100%;
+                margin-top: 5px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <h1>CGPA Calculator for Engineering Students</h1>
+            <p class="subtitle">Calculate your Semester and Cumulative GPA instantly</p>
+        </header>
+
+        <div class="calculator-section">
+            <div id="subject-rows">
+                <!-- Dynamic Inputs will go here -->
+                <div class="input-group">
+                    <div class="input-wrapper">
+                        <label for="credits-1">Credits</label>
+                        <input type="number" id="credits-1" placeholder="e.g. 4" min="0" step="0.5">
+                    </div>
+                    <div class="input-wrapper">
+                        <label for="grade-1">Grade Point (0-10)</label>
+                        <input type="number" id="grade-1" placeholder="e.g. 9.5" min="0" max="10" step="0.1">
+                    </div>
+                    <button class="btn btn-remove" onclick="removeRow(this)">Remove</button>
+                </div>
+            </div>
+
+            <button class="btn btn-add" onclick="addRow()">+ Add Subject</button>
+            <button class="btn btn-primary" onclick="calculateCGPA()">Calculate CGPA</button>
+
+            <div id="result" class="result-box">
+                <p>Your CGPA is:</p>
+                <h2 id="cgpa-value">0.00</h2>
+                <p id="grade-letter">Grade: A</p>
+            </div>
+        </div>
+
+        <!-- SEO Content Section -->
+        <div class="content-section">
+            <h2>How to calculate CGPA?</h2>
+            <p>Calculating your Cumulative Grade Point Average (CGPA) is essential for tracking your academic progress in engineering college. Follow these simple steps:</p>
+            
+            <div class="formula-box">
+                CGPA = Σ (Credit × Grade Point) / Σ Credits
+            </div>
+
+            <p><strong>Step 1:</strong> List all your subjects along with their credit hours.</p>
+            <p><strong>Step 2:</strong> Enter the grade points you obtained for each subject (usually on a scale of 0 to 10).</p>
+            <p><strong>Step 3:</strong> Multiply the credit hours by the grade point for each subject.</p>
+            <p><strong>Step 4:</strong> Sum up all the products and divide by the total number of credits.</p>
+
+            <h2>Why use this CGPA Calculator?</h2>
+            <p>Our tool is designed specifically for engineering students. It is mobile-friendly, meaning you can calculate your grades on your phone or laptop. It helps you predict your final semester results and plan your study strategy effectively.</p>
+        </div>
+    </div>
+
+    <script>
+        // Initialize with one row
+        window.onload = function() {
+            // Optional: Add a second row by default for convenience
+            addRow();
+        };
+
+        function addRow() {
+            const container = document.getElementById('subject-rows');
+            const rowCount = container.children.length + 1;
+            
+            const div = document.createElement('div');
+            div.className = 'input-group';
+            div.innerHTML = `
+                <div class="input-wrapper">
+                    <label for="credits-${rowCount}">Credits</label>
+                    <input type="number" id="credits-${rowCount}" placeholder="e.g. 4" min="0" step="0.5">
+                </div>
+                <div class="input-wrapper">
+                    <label for="grade-${rowCount}">Grade Point (0-10)</label>
+                    <input type="number" id="grade-${rowCount}" placeholder="e.g. 9.5" min="0" max="10" step="0.1">
+                </div>
+                <button class="btn btn-remove" onclick="removeRow(this)">Remove</button>
+            `;
+            container.appendChild(div);
+        }
+
+        function removeRow(btn) {
+            const container = document.getElementById('subject-rows');
+            if (container.children.length > 1) {
+                btn.parentElement.remove();
+            } else {
+                alert("You need at least one subject to calculate.");
+            }
+        }
+
+        function calculateCGPA() {
+            const inputs = document.querySelectorAll('.input-group');
+            let totalCredits = 0;
+            let totalPoints = 0;
+            let isValid = true;
+
+            inputs.forEach(inputGroup => {
+                const credits = parseFloat(inputGroup.querySelector('input[type="number"]:first-of-type').value);
+                const grade = parseFloat(inputGroup.querySelector('input[type="number"]:last-of-type').value);
+
+                if (isNaN(credits) || isNaN(grade)) {
+                    isValid = false;
+                } else {
+                    totalCredits += credits;
+                    totalPoints += (credits * grade);
+                }
+            });
+
+            const resultBox = document.getElementById('result');
+            const cgpaValue = document.getElementById('cgpa-value');
+            const gradeLetter = document.getElementById('grade-letter');
+
+            if (!isValid || totalCredits === 0) {
+                alert("Please enter valid numbers for all subjects.");
+                resultBox.style.display = 'none';
+                return;
+            }
+
+            const cgpa = totalPoints / totalCredits;
+            
+            // Display Result
+            resultBox.style.display = 'block';
+            cgpaValue.textContent = cgpa.toFixed(2);
+
+            // Simple Grade Logic
+            let letter = 'F';
+            if (cgpa >= 9) letter = 'O (Outstanding)';
+            else if (cgpa >= 8) letter = 'A+ (Excellent)';
+            else if (cgpa >= 7) letter = 'A (Good)';
+            else if (cgpa >= 6) letter = 'B+ (Above Average)';
+            else if (cgpa >= 5) letter = 'B (Average)';
+            else if (cgpa >= 4) letter = 'C (Pass)';
+            else if (cgpa >= 3.5) letter = 'P (Pass)';
+            
+            gradeLetter.textContent = `Grade: ${letter}`;
+        }
+    </script>
+</body>
+</html>
